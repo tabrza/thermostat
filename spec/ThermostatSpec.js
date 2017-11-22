@@ -16,4 +16,16 @@ describe('Thermostat', function(){
       expect(thermostat.temperatureUp(5)).toEqual(25);
     });
   });
+
+  describe('temperatureDown', function(){
+    it('should decrease the temperature', function(){
+      expect(thermostat.temperatureDown(5)).toEqual(15);
+    });
+
+    it('should not decrease below 10 degrees', function(){
+      expect(thermostat.temperatureDown(15)).toEqual('Min temperature is 10 degrees');
+    });
+  });
+
+
 });
