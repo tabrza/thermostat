@@ -2,6 +2,7 @@ var temperatureStart = 20;
 const minTemperature = 10;
 const maxSaving = 25;
 const maxTemp = 32;
+const lowUsage = 18;
 
 function Thermostat(){
   this.temperature = temperatureStart;
@@ -32,4 +33,10 @@ Thermostat.prototype.temperatureDown = function(degrees){
 
 Thermostat.prototype.reset = function(){
   return this.temperature = 20;
+}
+
+Thermostat.prototype.energyUsage = function(){
+  if(this.temperature < lowUsage){
+    return 'Low usage';
+  }
 }
