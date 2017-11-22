@@ -51,6 +51,14 @@ describe('Thermostat', function(){
       thermostat.temperatureDown(5);
       expect(thermostat.energyUsage()).toEqual('Low usage');
     });
+    it('return medium usage between 18 and 25', function(){
+      expect(thermostat.energyUsage()).toEqual('Medium usage');
+    });
+    it('return high usage over 25', function(){
+      thermostat.temperatureUp(5);
+      expect(thermostat.energyUsage()).toEqual('High usage');
+    });
+
   });
 
 });
