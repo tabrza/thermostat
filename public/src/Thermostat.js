@@ -45,6 +45,13 @@ Thermostat.prototype = {
     } else if( this.temperature < mediumUsage && this.temperature >= lowUsage) {
       return 'Medium usage';
     }
-  }
+  },
 
+  powerSavingModeOff: function(){
+    this.powerSavingMode = false
+  },
+
+  powerSavingModeOn: function(){
+    this.powerSavingMode = true
+  }
 };
