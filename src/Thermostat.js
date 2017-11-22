@@ -3,6 +3,7 @@ const minTemperature = 10;
 const maxSaving = 25;
 const maxTemp = 32;
 const lowUsage = 18;
+const mediumUsage = 25;
 
 function Thermostat(){
   this.temperature = temperatureStart;
@@ -32,11 +33,15 @@ Thermostat.prototype.temperatureDown = function(degrees){
 };
 
 Thermostat.prototype.reset = function(){
-  return this.temperature = 20;
-}
+  return this.temperature = temperatureStart;
+};
 
 Thermostat.prototype.energyUsage = function(){
-  if(this.temperature < lowUsage){
+  if(this.temperature < lowUsage) {
     return 'Low usage';
+  } else if(this.temperature >= mediumUsage) {
+      return 'High usage';
+  } else if( this.temperature < mediumUsage && this.temperature >= lowUsage) {
+    return 'Medium usage';
   }
-}
+};
