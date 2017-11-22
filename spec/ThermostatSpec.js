@@ -27,5 +27,18 @@ describe('Thermostat', function(){
     });
   });
 
+  describe('Power saving', function() {
+    it('should not go beyond 25 degrees when in power saving mode', function() {
+      expect(thermostat.temperatureUp(10)).toEqual('Max temp in power saving mode is 25 degrees');
+    });
+
+    it('should not go beyond 32 degrees when NOT in power saving mode', function() {
+      thermostat.powerSavingMode = false;
+      expect(thermostat.temperatureUp(15)).toEqual('Max temp is 32 degrees');
+    });
+  });
+
+
+
 
 });
