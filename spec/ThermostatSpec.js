@@ -38,7 +38,13 @@ describe('Thermostat', function(){
     });
   });
 
-
+  describe('Reset', function(){
+    it('should reset temp to 20', function(){
+      thermostat.temperatureUp(5)
+      thermostat.reset();
+      expect(thermostat.temperature).toEqual(20);
+    });
+  });
 
 
 });
