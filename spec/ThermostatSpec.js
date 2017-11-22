@@ -46,5 +46,11 @@ describe('Thermostat', function(){
     });
   });
 
+  describe('energy usage', function(){
+    it('should return low-usage for under 18', function(){
+      thermostat.temperatureDown(5);
+      expect(thermostat.energyUsage()).toEqual('Low usage');
+    });
+  });
 
 });
