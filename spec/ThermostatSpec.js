@@ -36,6 +36,17 @@ describe('Thermostat', function(){
       thermostat.powerSavingMode = false;
       expect(thermostat.temperatureUp(15)).toEqual('Max temp is 32 degrees');
     });
+
+    it('should switch from on to off', function() {
+      thermostat.powerSavingModeOff()
+      expect(thermostat.powerSavingMode).toEqual(false)
+    })
+
+    it('should switch from off to on', function() {
+      thermostat.powerSavingModeOff()
+      thermostat.powerSavingModeOn()
+      expect(thermostat.powerSavingMode).toEqual(true)
+    })
   });
 
   describe('Reset', function(){
