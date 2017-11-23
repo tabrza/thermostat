@@ -28,7 +28,7 @@ Thermostat.prototype = {
 
   temperatureDown: function(degrees){
     if((this.temperature - degrees) < minTemperature){
-      return "Min temperature is 10 degrees";
+      throw "Min temperature is 10 degrees";
     }
     return this.temperature -= degrees;
   },
@@ -47,11 +47,11 @@ Thermostat.prototype = {
     }
   },
 
-  powerSavingModeOff: function(){
-    this.powerSavingMode = false
-  },
-
-  powerSavingModeOn: function(){
-    this.powerSavingMode = true
+  powerSavingModeSwitch: function(){
+    if(this.powerSavingMode === false){
+      this.powerSavingMode = true
+    }else {
+      this.powerSavingMode = false
+    }
   }
 };
