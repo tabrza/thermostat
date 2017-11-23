@@ -1,23 +1,29 @@
 <html>
   <head>
     <script src='src/Thermostat.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script src="src/jQuery.js"></script>
+    <!-- <script type='text/javascript'>
+
+    </script> -->
   </head>
 
   <!-- background image depending on temp -->
   <body>
 
-    <div id='displayTemperature'>
 
-    </div>
+    <h2 id='displayTemperature'> </h2>
 
-    <div id='displayEnergyUsage'>
+    <h4 id='displayEnergyUsage'>
 
-    </div>
-
-    <button type='button' value='reset'>Reset</button>
-    <button type='button' value='tempUp'>Up</button>
-    <button type='button' value='tempDown'>Down</button>
+    </h4>
 
 
+
+    <button id='reset' type='button' value='reset'>Reset</button>
+    <button id='increase' type='button' value='tempUp'>Up</button>
+    <button id='decrease' type='button' value='tempDown'>Down</button>
+    <button id='psMode' type='button' value='psMode'>PS Mode <p id='psOn'>On</p> <p id='psOff'>Off</p></button>
   </body>
 </html>
