@@ -39,11 +39,11 @@ Thermostat.prototype = {
 
   energyUsage: function(){
     if(this.temperature < lowUsage) {
-      return 'Low usage';
+      return 'Low-Usage';
     } else if(this.temperature >= mediumUsage) {
-        return 'High usage';
+        return 'High-Usage';
     } else if( this.temperature < mediumUsage && this.temperature >= lowUsage) {
-      return 'Medium usage';
+      return 'Medium-Usage';
     }
   },
 

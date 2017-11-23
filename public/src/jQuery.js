@@ -1,25 +1,25 @@
 var thermostat = new Thermostat();
 
 $(document).ready(function(){
-  $('#displayTemperature').html(thermostat.temperature);
+  updateTemperature();
   $('#displayEnergyUsage').html(thermostat.energyUsage());
   $( "#psOff" ).hide();
 
   $('#reset').click(function(){
     thermostat.reset();
-    $('#displayTemperature').html(thermostat.temperature);
+    updateTemperature();
   });
 
   $('#increase').click(function(){
     thermostat.temperatureUp(1);
-    $('#displayTemperature').html(thermostat.temperature);
+    updateTemperature();
     $('#displayEnergyUsage').html(thermostat.energyUsage());
   });
 
   $('#decrease').click(function(){
     try {
       thermostat.temperatureDown(1);
-      $('#displayTemperature').html(thermostat.temperature);
+      updateTemperature();
       $('#displayEnergyUsage').html(thermostat.energyUsage());
     } catch(err) {
       alert(err);
@@ -36,4 +36,9 @@ $(document).ready(function(){
         $( "#psOff" ).show();
       }
     });
+
+  function updateTemperature() {
+    $('#displayTemperature').html(thermostat.temperature + ' &#8451;');
+    $('#displayTemperature').attr('class', thermostat.energyUsage());
+  }
 });
