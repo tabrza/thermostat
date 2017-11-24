@@ -4,6 +4,9 @@ $(document).ready(function(){
   updateTemperature();
   $('#displayEnergyUsage').html(thermostat.energyUsage());
   $( "#psOff" ).hide();
+  $.get("https://api.openweathermap.org/data/2.5/weather?q=london&units=metric&APPID=39f7158b4fbdeec4940041d9e1480b55",function(data){
+    console.log(data.main.temp);
+  })
 
   $('#reset').click(function(){
     thermostat.reset();
