@@ -15,29 +15,38 @@ function Mode() {
 
 }
 
-Mode.prototype = function() { return {
-    comparisonMaxSaving: function(degrees) {
-      return this.temperature + degrees > maxSaving;
+Mode.prototype = function(maxTemp, error) {
+  var modeNode = "";
+
+  return {
+    comparison: function(temperature) {
+      modeName = "Something"
+      return temperature > maxTemp;
     }
+
+    error: error
   }
 }
 
-Thermostat.prototype = function(mode) { return {
+var thermostat = new Thermostat([
+  new Mode(25, "Power saving mode is on"),
+  new Mode(32, "Max temp is 32")
+])
+
+Thermostat.prototype = function(modes) { return {
+
+  var currentMode = modes[0];
+
   temperatureUp: function(degrees) {
-    if (this.powerSavingMode === true) {
-      if (mode.comparisonMaxSaving(degrees)){
-        return 'Max temp in power saving mode is 25 degrees'
-      }
-        addDegrees(degrees);
-    } else {
-        if (this.temperature + degrees > maxTemp){
-          return 'Max temp is 32 degrees';
-        }
-        addDegrees(degrees);
+    if (currentMode.comparison(degrees + this.temperature)) {
+      return mode.error;
     }
+    addDegrees(degrees);
   },
 
-
+  setCurrentMode: function(index) {
+    currentMode = modes[index];
+  }
 
   addDegrees: function(degrees){
     this.temperature += degrees;
