@@ -11,19 +11,36 @@ function Thermostat(){
   this.powerSavingMode = true;
 };
 
-Thermostat.prototype = {
+function Mode() {
+
+}
+
+Mode.prototype = function() { return {
+    comparisonMaxSaving: function(degrees) {
+      return this.temperature + degrees > maxSaving;
+    }
+  }
+}
+
+Thermostat.prototype = function(mode) { return {
   temperatureUp: function(degrees) {
     if (this.powerSavingMode === true) {
-      if (this.temperature + degrees > maxSaving){
+      if (mode.comparisonMaxSaving(degrees)){
         return 'Max temp in power saving mode is 25 degrees'
       }
-      return this.temperature += degrees;
+        addDegrees(degrees);
     } else {
         if (this.temperature + degrees > maxTemp){
           return 'Max temp is 32 degrees';
         }
-        return this.temperature += degrees;
+        addDegrees(degrees);
     }
+  },
+
+
+
+  addDegrees: function(degrees){
+    this.temperature += degrees;
   },
 
   temperatureDown: function(degrees){
@@ -54,4 +71,5 @@ Thermostat.prototype = {
       this.powerSavingMode = false
     }
   }
+}
 };
